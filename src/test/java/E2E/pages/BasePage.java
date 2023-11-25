@@ -20,9 +20,9 @@ public class BasePage {
             return  false;
         }
      }
-     protected  void setInput(WebElement imput,String value){
-        imput.click();
-        imput.clear();
-        imput.sendKeys(value);
+     protected  void setInput(WebElement input,String value){
+        input.click();
+        input.clear();
+        input.sendKeys(value);
      }
 }
