@@ -1,0 +1,28 @@
+package E2E.pages;
+
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.decorators.WebDriverDecorator;
+
+public class BasePage {
+    public WebDriver driver;
+    public BasePage(WebDriver driver){
+        this.driver = driver;
+        PageFactory.initElements(driver,this);
+    }
+     protected boolean isElementDisplayed(WebElement element){
+        try {
+            element.isDisplayed();
+            return  true;
+        }catch (NoSuchElementException e){
+            return  false;
+        }
+     }
+     protected  void setInput(WebElement imput,String value){
+        imput.click();
+        imput.clear();
+        imput.sendKeys(value);
+     }
+}
