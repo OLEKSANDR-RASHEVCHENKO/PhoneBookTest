@@ -8,21 +8,24 @@ import org.openqa.selenium.support.decorators.WebDriverDecorator;
 
 public class BasePage {
     public WebDriver driver;
-    public BasePage(WebDriver driver){
+
+    public BasePage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
-     protected boolean isElementDisplayed(WebElement element){
+
+    protected boolean isElementDisplayed(WebElement element) {
         try {
             element.isDisplayed();
-            return  true;
-        }catch (NoSuchElementException e){
-            return  false;
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
         }
-     }
-     protected  void setInput(WebElement input,String value){
+    }
+
+    protected void setInput(WebElement input, String value) {
         input.click();
         input.clear();
         input.sendKeys(value);
-     }
+    }
 }
