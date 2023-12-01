@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class ContactsPage extends BasePage {
 
@@ -32,6 +33,7 @@ public class ContactsPage extends BasePage {
     @FindBy(xpath = "//*[@type='warning']")
     WebElement noResultsMessage;
 
+
     public boolean confirmLogin() {
         return header.isDisplayed();
     }
@@ -39,15 +41,16 @@ public class ContactsPage extends BasePage {
         contactsButton.click();
     }
     public int getContactCount(){
-        return driver.findElement(By.xpath("//*[@id='contacts-list']//*[@class='list-group']")).size();
+        return driver.findElements(By.xpath("//*[@id='contacts-list']//*[@class='list-group']")).size();
     }
 
     public AddContactDialog openAddContactDialog(){
         addContactButton.click();
         return new AddContactDialog(driver);
     }
-    public void openDeleteDialog(){
+    public DeleteContactDialog openDeleteDialog(){
         deleteButton.click();
+        return new DeleteContactDialog(driver);
     }
     public void filterByContact(String contactValue){
         searchInputField.sendKeys(contactValue);
@@ -55,4 +58,5 @@ public class ContactsPage extends BasePage {
     public boolean isNoResultMessageDisplayed(){
         return isElementDisplayed(noResultsMessage);
     }
+
 }

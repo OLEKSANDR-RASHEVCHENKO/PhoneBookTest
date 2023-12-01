@@ -35,6 +35,10 @@ public class ContactsPageInfo extends ContactsPage{
         editButton.click();
         Assert.assertFalse(isElementDisplayed(firstNameField),"Edit contacts form was not opened");
         return new EdinContactForm(driver);
+
+    }
+    public void isContactInfoPageVisible(){
+        Assert.assertFalse(isElementDisplayed(firstNameField));
     }
 
 
